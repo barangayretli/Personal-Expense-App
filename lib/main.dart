@@ -19,13 +19,21 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter App'),
       ),
-      body: Column(children: <Widget>[
-        Card(
-          color: Colors.blue,
-          child: Text('CHART'),
-          elevation: 50,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+        Container(
+          width: double.infinity,
+          child: Card(
+            color: Colors.blue,
+            child: Text('CHART'),
+            elevation: 50,
+          ),
         ),
-        Card(child: Text('LIST OF TX'))
+        Card(
+          color: Colors.red,
+          child: Text('LIST OF TX'))
       ]),
     );
   }
