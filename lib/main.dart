@@ -21,6 +21,9 @@ class MyHomePage extends StatelessWidget {
     Transaction(id: 't2', title: 'Ball', amount: 100.95, date: DateTime.now())
   ];
 
+  String titleInput;
+  String amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +31,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -37,6 +40,37 @@ class MyHomePage extends StatelessWidget {
                 color: Colors.blue,
                 child: Text('CHART'),
                 elevation: 50,
+              ),
+            ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                      onChanged: (value) {
+                        titleInput = value;
+                      },
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                      onChanged: (value) {
+                        amountInput = value;
+                      },
+                    ),
+                    FlatButton(
+                      child: Text('Add Transaction'),
+                      textColor: Colors.purple,
+                      onPressed: () {
+                        print(titleInput);
+                        print(amountInput);
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             Column(
@@ -75,12 +109,13 @@ class MyHomePage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text(DateFormat().format(tx.date),
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                             
-                          ),)
+                          Text(
+                            DateFormat('yyyy/MM/dd').format(tx.date),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          )
                         ],
                       ),
                     ],
